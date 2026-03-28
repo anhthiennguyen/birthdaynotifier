@@ -34,6 +34,7 @@
   { "name": "Jaron",   "birthday": "08-03", "phone": "+12066659514" },
   { "name": "John",    "birthday": "08-12", "phone": "+12065955418" },
   { "name": "John",    "birthday": "08-12", "phone": "+12063836721" },
+  { "name": "Bharat",    "birthday": "08-15", "phone": "+18473878056" },
   { "name": "Nathan",  "birthday": "08-16", "phone": "+14257491278" },
   { "name": "Elleine", "birthday": "08-19", "phone": "+12069002446" },
   { "name": "Sofia",   "birthday": "08-31", "phone": "+13605410888" },
@@ -45,5 +46,12 @@
   { "name": "Devin",   "birthday": "10-28", "phone": "+14255247198" },
   { "name": "Mary",    "birthday": "10-30", "phone": "+12068865830" },
   { "name": "Dylan",   "birthday": "11-08", "phone": "+12067780709" },
-  {"name": "Vince",   "birthday": "11-09", "phone": "+12066439976" }
+  { "name": "Vince",   "birthday": "11-09", "phone": "+12066439976" },
+  { "name": "Trenton", "birthday": "12-07", "phone": "+14252008677" },
+  { "name": "Travis",  "birthday": "12-20", "phone": "+12534316734" },
+  { "name": "Y",       "birthday": "12-22", "phone": "+14259198132" },
+  { "name": "Al",   "birthday": "12-23", "phone": "+12533913968" },
+  {"name": "Meng",    "birthday": "12-27", "phone": "+14255472344" },
+  {"name": "Ronan",     "birthday": "12-29", "phone": "+14256578826" },
+  { "name": "Althea",  "birthday": "12-30", "phone": "+12065136841" }
 ]
