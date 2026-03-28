@@ -27,8 +27,13 @@ def lambda_handler(event, context):
     results = []
     for contact in birthdays_today:
         name = contact["name"]
-        phone = contact["phone"]
-        message = f"Happy Birthday, {name}! Wishing you an amazing day filled with joy and celebration!"
+        if not contact["phone"].strip():
+            print(f"No phone number for {name}, skipping")
+            results.append({"name": name, "status": "skipped", "reason": "no phone number"})
+            continue
+        raw = "".join(c for c in contact["phone"] if c.isdigit() or c == "+")
+        phone = raw if raw.startswith("+") else f"+1{raw}"
+        message = f"Happy Birthday {name}! -Thien :)"
 
         try:
             payload = urllib.parse.urlencode({

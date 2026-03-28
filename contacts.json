@@ -1,7 +1,7 @@
 [
   {"name": "Ba Co", "birthday": "01-01", "phone": "+12533776600" },
   { "name": "Henry",   "birthday": "01-06", "phone": "+13607731667" },
-  {"name": "Gay Boy, You're getting older now", "birthday": "01-07", "phone": "+12532272005" },
+  {"name": "Gay boy, you're getting older now", "birthday": "01-07", "phone": "+12532272005" },
   { "name": "Jackie",  "birthday": "01-25", "phone": "+12538009879" },
   { "name": "Ally",    "birthday": "02-04", "phone": "+12063900850" },
   { "name": "Maneet",  "birthday": "02-05", "phone": "+14255243764" },
@@ -44,5 +44,6 @@
   { "name": "Derek",   "birthday": "10-28", "phone": "+12063595148" },
   { "name": "Devin",   "birthday": "10-28", "phone": "+14255247198" },
   { "name": "Mary",    "birthday": "10-30", "phone": "+12068865830" },
-  { "name": "Dylan",   "birthday": "11-08", "phone": "+12067780709" }
+  { "name": "Dylan",   "birthday": "11-08", "phone": "+12067780709" },
+  {"name": "Vince",   "birthday": "11-09", "phone": "+12066439976" }
 ]

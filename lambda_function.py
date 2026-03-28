@@ -33,7 +33,7 @@ def lambda_handler(event, context):
             continue
         raw = "".join(c for c in contact["phone"] if c.isdigit() or c == "+")
         phone = raw if raw.startswith("+") else f"+1{raw}"
-        message = f"Happy Birthday {name}! -Thien (can't receive replies here)"
+        message = f"Happy Birthday {name}! -Thien :)"
 
         try:
             payload = urllib.parse.urlencode({
