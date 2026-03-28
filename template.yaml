@@ -1,0 +1,69 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Birthday SMS automation via Twilio, triggered at midnight PT
+
+Parameters:
+  TextBeltApiKey:
+    Type: String
+    NoEcho: true
+    Description: TextBelt API key (get one at textbelt.com)
+  # Optional: set these to load contacts.json from S3 instead of the bundled file
+  ContactsS3Bucket:
+    Type: String
+    Default: ""
+    Description: S3 bucket containing contacts.json (leave blank to use bundled file)
+  ContactsS3Key:
+    Type: String
+    Default: "contacts.json"
+    Description: S3 key for contacts.json
+
+Globals:
+  Function:
+    Timeout: 30
+    Runtime: python3.12
+    MemorySize: 128
+
+Resources:
+  BirthdayFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: birthday-sms-sender
+      Handler: lambda_function.lambda_handler
+      Description: Sends Happy Birthday SMS at midnight Pacific Time
+      Environment:
+        Variables:
+          TEXTBELT_API_KEY: !Ref TextBeltApiKey
+          CONTACTS_S3_BUCKET: !Ref ContactsS3Bucket
+          CONTACTS_S3_KEY: !Ref ContactsS3Key
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - !If
+          - HasS3Bucket
+          - Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                Resource: !Sub "arn:aws:s3:::${ContactsS3Bucket}/${ContactsS3Key}"
+          - !Ref AWS::NoValue
+      Events:
+        MidnightPacific:
+          Type: Schedule
+          Properties:
+            # Midnight PT = 08:00 UTC (PST, UTC-8) — covers standard time
+            # During PDT (UTC-7) this fires at 1:00 AM PT; acceptable tradeoff
+            # To handle DST precisely, use two rules or an EventBridge Scheduler with timezone support
+            Schedule: cron(0 8 * * ? *)
+            Name: birthday-midnight-pt
+            Description: Fires at 08:00 UTC (midnight PST / 1 AM PDT)
+            Enabled: true
+
+Conditions:
+  HasS3Bucket: !Not [!Equals [!Ref ContactsS3Bucket, ""]]
+
+Outputs:
+  BirthdayFunctionArn:
+    Description: Lambda function ARN
+    Value: !GetAtt BirthdayFunction.Arn
+  EventBridgeRule:
+    Description: EventBridge schedule name
+    Value: birthday-midnight-pt
