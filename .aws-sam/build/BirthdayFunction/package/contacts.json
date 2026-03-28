@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Mom",
+    "birthday": "01-15",
+    "phone": "+15551234567"
+  },
+  {
+    "name": "Dad",
+    "birthday": "03-22",
+    "phone": "+15559876543"
+  },
+  {
+    "name": "Best Friend",
+    "birthday": "07-04",
+    "phone": "+15551112222"
+  }
+]
